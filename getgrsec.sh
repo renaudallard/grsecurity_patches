@@ -1,9 +1,9 @@
 #!/bin/sh
 
-ftp -V -o - "http://grsecurity.net/test.php" | grep grsecurity- | perl -p -e 's/href=/\n/g' | awk '/\.patch/ {print $1}' |egrep -v "\.sig|div|iptables" | sed 's/"//g' | while read URL
+ftp -V -o - "http://grsecurity.net/test.php" | grep grsecurity- | perl -p -e 's/href=/\n/g' | awk '/\.patch/ {print $1}' |grep test | awk -F '\>' '{print $2}' | awk -F '\<' '{print $1}'| head -1 | while read URL
 do
 	echo ${URL}
-	ftp -C -V "http://grsecurity.net/${URL}"
+	ftp -C -V "https://grsecurity.net/test/${URL}"
 done
 
 git add *
