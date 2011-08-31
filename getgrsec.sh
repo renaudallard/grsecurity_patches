@@ -1,5 +1,5 @@
 #!/bin/sh
-ftp -V "http://grsecurity.net/test.php" -o grsec.html
+ftp -V -o grsec.html "http://grsecurity.net/test.php"
 grep grsecurity- grsec.html > grsec2.html
 perl -p -i -e 's/href=/\n/g' grsec2.html 
 cat grsec2.html |  awk '{print $1}' |egrep -v "\.sig|div" | sed 's/"//g' | while read URL
