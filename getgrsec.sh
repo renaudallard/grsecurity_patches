@@ -6,3 +6,6 @@ cat /tmp/grsec2.html |  awk '{print $1}' |egrep -v "\.sig|div" | sed 's/"//g' | 
 do
 	wget -q "http://grsecurity.net/${URL}"
 done
+git add *
+git commit -a -C 6a0abdba5dd74430d661317c6cf7458a04a9348f
+git push
