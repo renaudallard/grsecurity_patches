@@ -6,7 +6,7 @@ do
 	ftp -C -V "https://grsecurity.net/test/${URL}"
 done
 
-find grsecurity-* -ctime +180 -exec rm {} \;
+find grsecurity-* -ctime +30 -exec rm {} \;
 
 for i in `git status | grep deleted | awk '{print $2}'`; do git update-index --assume-unchanged $i; done
 
