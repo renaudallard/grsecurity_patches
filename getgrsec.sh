@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ftp -V -o - "http://grsecurity.net/test.php" | grep grsecurity- | perl -p -e 's/href=/\n/g' | awk '/\.patch grsec2.html/ {print $1}' |egrep -v "\.sig|div|iptables" | sed 's/"//g' | while read URL
+ftp -V -o - "http://grsecurity.net/test.php" | grep grsecurity- | perl -p -e 's/href=/\n/g' | awk '/\.patch/ {print $1}' |egrep -v "\.sig|div|iptables" | sed 's/"//g' | while read URL
 do
 	echo ${URL}
 	ftp -C -V "http://grsecurity.net/${URL}"
